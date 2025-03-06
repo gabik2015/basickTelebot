@@ -28,7 +28,7 @@ def gen_pass(pass_length):
     for i in range(pass_length):
         password += random.choice(elements)
     return password
-bot = telebot.TeleBot("7425642007:AAGoPFp2HRfaIJ144E48EgvV4rF7LWcveRs")
+bot = telebot.TeleBot("ApiToken")
 
 @bot.message_handler(commands=["start"])
 def start_cmd(message:Message):
