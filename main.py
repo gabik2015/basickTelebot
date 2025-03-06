@@ -43,7 +43,6 @@ def about_cmd(message:Message):
 def password(message:Message):
     bot.send_message(message.chat.id,f"my random password: {gen_pass(10)}")
 
-
 @bot.message_handler(commands=["randomnumber"])
 def rn_cmd(message:Message):
     bot.send_message(message.chat.id,f"my random number: {random.randint(1,6)}")
@@ -113,7 +112,18 @@ def shrifts_cmd(message:Message):
 def shrifts_cmd1(message:Message):
     bot.send_message(message.chat.id,f"{message.text.translate(shrifts1)}\n {message.text.translate(shrifts2)}\n {message.text.translate(shrifts3)}\n {message.text.translate(shrifts4)}\n {message.text.translate(shrifts5)}\n {message.text.translate(shrifts6)}\n {message.text.translate(shrifts7)}\n {message.text.translate(shrifts8)}\n")
     
+@bot.message_handler(commands=['echo'])
+def send_welcome(message:Message):
+    bot.reply_to(message, """\
+Hi there, I am EchoBot.
+I am here to echo your kind words back to you. Just say anything nice and I'll say the exact same thing to you!\
+""")
 
+
+# Handle all other messages with content_type 'text' (content_types defaults to ['text'])
+@bot.message_handler(func=lambda message: True)
+def echo_message(message:Message):
+    bot.reply_to(message, message.text)
 
 
 
